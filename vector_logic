@@ -1,0 +1,104 @@
+#include <bits/stdc++.h> 
+#include <vector> 
+#include <iostream>
+#include <cstdlib>
+using namespace std; 
+string first_name;
+string last_name;
+int number;
+  
+int main() 
+{ 
+    // Creazione di tre vettori per nome, cognome e numero
+    vector<int>v; 
+    vector<string>name;
+    vector<string>surname;
+    
+    //creazione contatti di esempio
+	 
+    name.push_back("carla");
+    name.push_back("bianca");
+    name.push_back("francesca");
+    name.push_back("carla");
+    
+    surname.push_back("fiori");
+    surname.push_back("cesaroni");
+    surname.push_back("vergallo");
+    surname.push_back("cesaroni");
+    
+    v.push_back(23456);
+    v.push_back(67899);
+    v.push_back(386890);
+    v.push_back(23456789);
+    
+    //permette di inserire un nuovo contatto (possibile funzione "aggiungi")
+    
+    cout << "inserisci un nome" << endl;
+    cin >> first_name;
+    name.push_back(first_name);
+    cout << "inserisci un cognome" << endl;
+    cin >> last_name;
+    surname.push_back(last_name);
+    cout << "inserisci un numero" << endl;
+    cin >> number;
+    v.push_back(number);
+  
+    // fill the array with 10 five times 
+    /*v.assign(5, 10); */
+  
+  //stampa i contenuti dei tre vettori
+  
+    cout << "The vector elements are: " << endl; 
+    for (int i = 0; i < v.size(); i++) 
+        cout << v[i] << " "; 
+    cout << endl;    
+    cout << "The vector elements are: " << endl;
+    for (int i=0; i<name.size(); i++)     
+        cout << name[i] << "\n";
+	cout << "The vector elements are: "<< endl;
+    for (int i=0; i<surname.size(); i++)     
+        cout << surname[i] << "\n";   
+        
+    //per eliminare un contatto   
+	//(gli appunto sotto sono delle prove precedenti) 
+        
+	int a;
+	int g = true;	
+	cout << "memoria piena, decidi quale numero cancellare" << endl;
+	cout << "inserisci un nome" << endl;
+    cin >> first_name;
+    /*for (int i=0; i<name.size(); i++)
+    	if (name[i] == n){
+    		a = i;
+		}*/
+    cout << "inserisci un cognome" << endl;
+    cin >> last_name;
+    while(g){
+		for (int i=0; i<name.size(); i++){
+	    	//g = i;
+	    	for (int e=0; e<surname.size(); e++){
+	    		if(name[i] == first_name and surname[e] == last_name and i == e){
+	    			name.erase(name.begin() + i);
+	    			surname.erase(surname.begin() + e);
+	    			v.erase(v.begin() + e);
+	    			g = false;
+				}
+			}
+		}
+	}
+    
+    /*for (int i=0; i<surname.size(); i++)
+    	if (surname[i] == s){
+    		if(a == i){
+    			name.erase(name.begin() + i);
+    			surname.erase(surname.begin() + i);
+			}
+			
+		}*/
+	
+	//ristampa il contenuto dei vettori sotto forma di rubrica 
+	
+	cout << "I tuoi contatti sono: " << endl;
+	for (int i=0; i<name.size(); i++)
+		cout << name[i] << " " << surname[i] << " " << v[i] << endl; 	  	
+	}
