@@ -48,40 +48,37 @@ int main()
   
   //stampa i contenuti dei tre vettori
   
-    cout << "The vector elements are: " << endl; 
-    for (int i = 0; i < v.size(); i++) 
-        cout << v[i] << " "; 
-    cout << endl;    
-    cout << "The vector elements are: " << endl;
-    for (int i=0; i<name.size(); i++)     
-        cout << name[i] << "\n";
-	cout << "The vector elements are: "<< endl;
-    for (int i=0; i<surname.size(); i++)     
-        cout << surname[i] << "\n";   
+   cout << "The vector elements are: " << endl;
+   for (int i=0; i<name.size(); i++) {
+   	cout << name[i] << " ";
+    	cout << surname[i] << " " ;   
+    	cout << v[i] << "\n"; 
+  }
         
     //per eliminare un contatto   
 	//(gli appunto sotto sono delle prove precedenti) 
         
 	int a;
-	int g = true;	
+	int g ;
+	g = 1 ;
 	cout << "memoria piena, decidi quale numero cancellare" << endl;
 	cout << "inserisci un nome" << endl;
-    cin >> first_name;
-    /*for (int i=0; i<name.size(); i++)
+    	cin >> first_name;
+    	/*for (int i=0; i<name.size(); i++)
     	if (name[i] == n){
     		a = i;
 		}*/
-    cout << "inserisci un cognome" << endl;
-    cin >> last_name;
-    while(g){
+    	cout << "inserisci un cognome" << endl;
+   	cin >> last_name;
+   	while(g==1){
 		for (int i=0; i<name.size(); i++){
 	    	//g = i;
-	    	for (int e=0; e<surname.size(); e++){
-	    		if(name[i] == first_name and surname[e] == last_name and i == e){
-	    			name.erase(name.begin() + i);
-	    			surname.erase(surname.begin() + e);
-	    			v.erase(v.begin() + e);
-	    			g = false;
+	    		for (int e=0; e<surname.size(); e++){
+	    			if(name[i] == first_name and surname[e] == last_name and i == e){
+	    				name.erase(name.begin() + i);
+	    				surname.erase(surname.begin() + e);
+	    				v.erase(v.begin() + e);
+	    				g = g-1;
 				}
 			}
 		}
