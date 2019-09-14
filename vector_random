@@ -1,0 +1,132 @@
+#include <bits/stdc++.h> 
+#include <vector> 
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+ 
+string first_name;
+string last_name;
+int number;
+
+vector<int>phone; 
+vector<string>name;
+vector<string>surname;
+
+void random_name(){
+	int i = 0;
+	string random_name[10] = {"Bianca", "Alice", "Marco", "Simone", "Mauro", "Giovanni", "Andrea", "Federica", "Max", "Licia"};
+	while(i++ < 10) {
+		int r = (rand() % 10);
+		string element = random_name[r];
+		name.push_back(element);
+			}
+	cout << "The vector name elements are: " << endl; 
+    for (int i = 0; i < name.size(); i++) {
+	cout << name[i] << endl; 
+	} 
+}
+
+void random_surname(){
+	int i = 0;
+	string random_surname[10] = {"Greco", "Conti", "Ricci", "Ferri", "Costa", "Galli", "Serra", "Parisi", "Villa", "Riva"};
+	while(i++ < 10) {
+		int r = (rand() % 10);
+		string element = random_surname[r];
+		surname.push_back(element);
+			}
+	cout << "The vector surname elements are: " << endl; 
+    for (int i = 0; i < surname.size(); i++) {
+	cout << surname[i] << endl; 
+	} 
+}
+
+void random_number(){
+	int i = 0;
+	while(i++ < 10) {
+		int r = (rand() % 32000) + 35897389;
+		phone.push_back(r);
+	}
+	cout << "The vector phone elements are: " << endl; 
+    for (int i = 0; i < phone.size(); i++) {
+	cout << phone[i] << endl; 
+	} 
+}
+
+//vecchio codice di prova
+/*void random(string vector_name){
+	int i = 0;
+	string random_name[10] = {"Bianca", "Alice", "Marco", "Simone", "Mauro", "Giovanni", "Andrea", "Federica", "Max", "Licia"};
+	string random_surname[10] = {"Greco", "Conti", "Ricci", "Ferri", "Costa", "Galli", "Serra", "Parisi", "Villa", "Riva"};
+	
+	if (vector_name == "phone"){
+		while(i++ < 10) {
+			int r = (rand() % 30500) + 63500;
+			//cout << r << endl;
+			vector_name.push_back(r);
+			}
+	}else if(vector_name == "name"){
+		for(int i = 0; i < 10; i++){
+			//int r = (rand() % 10);
+			//cout << r << endl;
+			string element = random_name[i];
+			name.push_back(element);
+			}
+	}else{
+		while(i++ < 10) {
+			int r = (rand() % 10);
+			//cout << r << endl;
+			string element = random_name[r];
+			surname.push_back(element);
+		}
+	}
+}*/
+
+void print_vector(){
+	cout << "I contatti nella tua rubrica sono:" << endl; 
+    for (int i = 0; i < 10; i++){
+		cout << name[i] << " ";
+		cout << surname[i] << " ";
+		cout << phone[i] << " "; 
+    	cout << endl;
+	} 
+            
+}
+
+int main() 
+{ 
+    random_name();
+    random_surname();
+    random_number();
+    cout << endl;
+    print_vector();
+    
+    int a;
+	int g = true;	
+	cout << "memoria piena, decidi quale numero cancellare" << endl;
+	cout << "inserisci un nome" << endl;
+    cin >> first_name;
+    /*for (int i=0; i<name.size(); i++)
+    	if (name[i] == n){
+    		a = i;
+		}*/
+    cout << "inserisci un cognome" << endl;
+    cin >> last_name;
+    while(g){
+		for (int i=0; i<name.size(); i++){
+	    	//g = i;
+	    	for (int e=0; e<surname.size(); e++){
+	    		if(name[i] == first_name and surname[e] == last_name and i == e){
+	    			name.erase(name.begin() + i);
+	    			surname.erase(surname.begin() + e);
+	    			phone.erase(phone.begin() + e);
+	    			g = false;
+				}
+			}
+		}
+	}
+	
+	cout << "I tuoi contatti sono: " << endl;
+	for (int i=0; i<name.size(); i++)
+		cout << name[i] << " " << surname[i] << " " << phone[i] << endl; 	  	
+	}
