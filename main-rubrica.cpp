@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 { 	
-	random_name();
+    random_name();
     random_surname();
     random_number();
     random_check();
