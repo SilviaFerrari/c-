@@ -1,9 +1,11 @@
 #include <iostream>
-#include "void-rubrica.cpp"
+#include <fstream>
+#include <string>
+#include "void.cpp"
 using namespace std;
 int main()
 { 	
-    random_name();
+	random_name();
     random_surname();
     random_number();
     random_check();
@@ -17,22 +19,28 @@ int main()
 		cin >> key;
 		cout << endl;
 		
-		if (key == 'a'){
-			add_contact();
+		switch(key)
+		{
+			case 'a':
+				add_contact();
+				break;
+			
+			case 's':
+				search();
+				break;
+			
+			case 'r':
+				remove();
+				break;
+			
+			case 'e':
+				remove_all();
+				break;
+			
+			case 'q':
+				quit = true;
+				break;
 		}
-		else if(key == 's'){
-			search();
-		}
-		else if(key == 'r'){
-			remove();
-		}
-		else if(key == 'e'){
-			remove_all();
-		}
-		else if(key == 'q'){
-			quit = true;
-		}else{
-			cout << "Comando non valido" << endl;
-		}
+		
 	}while(quit == false); 	
 }
