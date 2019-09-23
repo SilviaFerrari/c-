@@ -97,8 +97,8 @@ void random_check()
 	    		if(name[i] == first_name and surname[e] == last_name and i == e)
 				{
 	    			name.erase(name.begin() + i);
-	    			surname.erase(surname.begin() + e);
-	    			phone.erase(phone.begin() + e);
+	    			surname.erase(surname.begin() + i);
+	    			phone.erase(phone.begin() + i);
 				}else if(phone[e] == number and i == e)
 				{
 					name.erase(name.begin() + i);
@@ -131,8 +131,10 @@ void add_contact()
 {
 	cout << "Inserisci il nome del contatto" << endl;
     cin >> first_name;
+    //getline(cin, first_name);
     cout << "Inserisci il cognome" << endl;
     cin >> last_name;
+    //getline(cin, last_name);
     cout << "Inserisci il numero" << endl;
     cin >> number;
     
@@ -171,16 +173,6 @@ void add_contact()
 		cout << endl;
 		main_page();
 	}
-}
-
-//funzione ancora da fare per ultimare il programma
-void change(){
-	cout << "Inserisci il nome del contatto" << endl;
-    cin >> first_name;
-    cout << "Inserisci il cognome" << endl;
-    cin >> last_name;
-    cout << "Inserisci il numero" << endl;
-    cin >> number;
 }
 
 void search()
@@ -257,17 +249,17 @@ void remove()
     cin >> last_name;
     
     for (int i = 0; i < name.size(); i++)
+	{
+	    for (int e = 0; e < surname.size(); e++)
 		{
-	    	for (int e = 0; e < surname.size(); e++)
+	    	if(name[i] == first_name and surname[e] == last_name and i == e)
 			{
-	    		if(name[i] == first_name and surname[e] == last_name and i == e)
-				{
-	    			name.erase(name.begin() + i);
-	    			surname.erase(surname.begin() + e);
-	    			phone.erase(phone.begin() + e);
-				}
+	    		name.erase(name.begin() + i);
+	    		surname.erase(surname.begin() + e);
+	    		phone.erase(phone.begin() + e);
 			}
 		}
+	}
 }
 
 void remove_all()
