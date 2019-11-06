@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+char key;
+int x = 20;
+int quit = false;
+
+string first_name;
+string second_name;
+string phone;
+
+string name[20] = {"Andrea", "Luca", "Bianca", "Licia"};
+string surname[20] = {"Tosato", "Artioli", "Greco", "Riva"};
+string number[20] = {"7235647826", "3485689246", "9836348115", "9186481667"};
+
+void print_rub(){
+	cout << "I TUOI CONTATTI" << endl << endl;
+	for(int i = 0; i <= x; i++){
+		if(i < 10){
+			cout << " " << i << " " ;
+		}
+		else{
+			cout << i << " ";
+		}
+		if(name[i] != " "){
+			cout << name[i] << " " << surname[i] << " " << number[i] << endl; 
+		}
+	}
+}
+
+void add(){
+	cout << "Nome: ";
+	cin >> first_name;
+	cout << "Cognome: ";
+	cin >> second_name;
+	cout << "Numero: ";
+	cin >> phone;
+}
+
+
+
+int main(){
+	
+	print_rub();
+	
+	do{
+		cout << endl;
+		cin >> key;
+		cout << endl;
+		switch(key)
+		{
+			case 'a':
+				add();
+				break;
+			case 'q':
+				quit = true;
+				break;
+	    }
+				
+	}while(quit == false);
+}
