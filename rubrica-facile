@@ -1,11 +1,10 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 char key;
-int x = 20;
-int quit = false;
+char quit = false;
+int position;
 
 string first_name;
 string second_name;
@@ -15,38 +14,56 @@ string name[20] = {"Andrea", "Luca", "Bianca", "Licia"};
 string surname[20] = {"Tosato", "Artioli", "Greco", "Riva"};
 string number[20] = {"7235647826", "3485689246", "9836348115", "9186481667"};
 
-void print_rub(){
-	cout << "I TUOI CONTATTI" << endl << endl;
-	for(int i = 0; i <= x; i++){
-		if(i < 10){
-			cout << " " << i << " " ;
-		}
-		else{
-			cout << i << " ";
-		}
-		if(name[i] != " "){
-			cout << name[i] << " " << surname[i] << " " << number[i] << endl; 
+int print_rubrica(){
+	cout << " I TUOI CONTATTI" << endl << endl;
+	for(int i = 0; i <= 20; i++){
+		if(name[i] != ""){			
+			if(i < 10){
+				cout << " " << i+1 << " " ;
+			}
+			else{
+				cout << i << " "; 
+			}
+			cout << name[i] << " " << surname[i] << " " << number[i] << endl;
+		}else{
+		cout << "";
 		}
 	}
 }
 
 void add(){
+	cout << "Posizione del contatto: ";
+	cin >> position;
+	position -= 1;
 	cout << "Nome: ";
 	cin >> first_name;
+	name[position] = first_name;
 	cout << "Cognome: ";
 	cin >> second_name;
+	surname[position] = second_name;
 	cout << "Numero: ";
 	cin >> phone;
+	number[position] = phone;
+	print_rubrica();
 }
 
+void remove(){
+	cout << "Posizione del contatto da eliminare: ";
+	cin >> position;
+	for(int i = position; i < 20; i++){
+		name[i] = name[i+1];	
+		surname[i] = surname[i+1];
+		number[i] = number[i+1];
+	}
+	print_rubrica();
+}
 
-
-int main(){
-	
-	print_rub();
-	
-	do{
-		cout << endl;
+int main(){	 
+	print_rubrica();
+	while(quit == false){
+		cout << "A - aggiungi contatto" << endl
+		<< "D - elimina contatto" << endl
+		<< "Q - esci" << endl;
 		cin >> key;
 		cout << endl;
 		switch(key)
@@ -54,10 +71,12 @@ int main(){
 			case 'a':
 				add();
 				break;
+			case 'D':
+				remove();
+				break;		
 			case 'q':
 				quit = true;
 				break;
-	    }
-				
-	}while(quit == false);
+		}	
+	}
 }
