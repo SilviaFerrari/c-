@@ -11,9 +11,7 @@ int main()
     random_number();
     random_check();
     
-	cout << "Ti diamo il benvenuto nella tua rubrica personale." << endl
-	<< "Premi un tasto qualunque per visualizzare i tuoi contatti." << endl;
-	cin >> key;
+	cout << "Ti diamo il benvenuto nella tua rubrica personale." << endl;
 	main_page();
 	do
 	{
