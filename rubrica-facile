@@ -14,9 +14,9 @@ string name[20] = {"Andrea", "Luca", "Bianca", "Licia"};
 string surname[20] = {"Tosato", "Artioli", "Greco", "Riva"};
 string number[20] = {"7235647826", "3485689246", "9836348115", "9186481667"};
 
-int print_rubrica(){
-	cout << " I TUOI CONTATTI" << endl << endl;
-	for(int i = 0; i <= 20; i++){
+void print_rub(){
+	cout << endl << "I TUOI CONTATTI" << endl << endl;
+	for(int i = 0; i < 20; i++){
 		if(name[i] != ""){			
 			if(i < 10){
 				cout << " " << i+1 << " " ;
@@ -32,36 +32,38 @@ int print_rubrica(){
 }
 
 void add(){
-	cout << "Posizione del contatto: ";
-	cin >> position;
-	position -= 1;
 	cout << "Nome: ";
 	cin >> first_name;
-	name[position] = first_name;
 	cout << "Cognome: ";
 	cin >> second_name;
-	surname[position] = second_name;
 	cout << "Numero: ";
 	cin >> phone;
-	number[position] = phone;
-	print_rubrica();
+	for(int i = 0; i<20; i++){
+		if(name[i] == "" && surname[i] == "" && number[i] == ""){
+			name[i] = first_name;
+			surname[i] = second_name;
+			number[i] = phone;
+			break;
+		}
+	}
+	print_rub();
 }
 
 void remove(){
 	cout << "Posizione del contatto da eliminare: ";
 	cin >> position;
-	for(int i = position; i < 20; i++){
+	for(int i = position-1; i < 19; i++){
 		name[i] = name[i+1];	
 		surname[i] = surname[i+1];
 		number[i] = number[i+1];
 	}
-	print_rubrica();
+	print_rub();
 }
 
 int main(){	 
-	print_rubrica();
+	print_rub();
 	while(quit == false){
-		cout << "A - aggiungi contatto" << endl
+		cout << endl << "A - aggiungi contatto" << endl
 		<< "D - elimina contatto" << endl
 		<< "Q - esci" << endl;
 		cin >> key;
@@ -71,12 +73,12 @@ int main(){
 			case 'a':
 				add();
 				break;
-			case 'D':
+			case 'd':
 				remove();
 				break;		
 			case 'q':
 				quit = true;
-				break;
+				break;		
 		}	
 	}
 }
