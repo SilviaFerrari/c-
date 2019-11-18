@@ -7,21 +7,23 @@
 #include <string>
 using namespace std;
 
-vector<int>phone; 
+vector<string>phone; 
 vector<string>name;
 vector<string>surname;
 
 string first_name;
 string last_name;
-int number;
+string number;
 
 string newname;
 string newsurname;
-int newnumber;
+string newnumber;
 
-string question;
-string choise;
+char choise;
+string question;	
+
 char key;
+
 int index;
 int control;
 int element;
@@ -35,7 +37,7 @@ bool is_number(string s)
             return false; 
 	}	
     return true; 
-} 
+}
 
 void random_name()
 {
@@ -65,8 +67,11 @@ void random_number(){
 	int i = 0;
 	while(i++ < 20) 
 	{
-		int r = (rand() % 32000) + 35897389;
-		phone.push_back(r);
+		int r = (rand() % 10000) + 348599999;
+		stringstream numberConvert;	
+		numberConvert << r;
+		string word_num = numberConvert.str();
+		phone.push_back(word_num);
 	}
 }
 
@@ -75,9 +80,15 @@ void print_vector()
 	cout << "I TUOI CONTATTI" << endl << endl; 
     for (int i = 0; i < name.size(); i++)
 	{
-		cout << name[i] << " "
-		<< surname[i] << " "
-		<< phone[i] << " " 
+		cout << " " << name[i];
+		for(int e = name[i].length(); e <= 10; e++){
+			cout << " " ;
+		}
+		cout << " " << surname[i];
+		for(int e = surname[i].length(); e <= 10; e++){
+			cout << " " ;
+		}
+		cout << " " << phone[i] << " " 
     	<< endl;
 	}          
 }
@@ -141,7 +152,7 @@ void main_page()
 	<< endl
 	<< "S - cerca contatto" << endl
 	<< endl
-	<< "D - digita un contatto per accedere a più opzioni" << endl 
+	<< "D - digita un contatto per accedere ad altre opzioni" << endl 
 	<< endl
 	<< "E - elimina rubrica" << endl 
 	<< endl
@@ -151,24 +162,24 @@ void main_page()
 
 void add_contact()
 {
-	cout << "Inserisci il nome del contatto" << endl;
+	cout << "Nome: ";
     cin >> first_name;
     //getline(cin, first_name);
-    cout << "Inserisci il cognome" << endl;
+    cout << "Cognome: ";
     cin >> last_name;
     //getline(cin, last_name);
-    cout << "Inserisci il numero" << endl;
+    cout << "Numero: ";
     cin >> number;
     
     check();
     if(control == 1)
     {
     	cout << endl;
-    	cout << "Impossibile salvare il contatto, nome e cognome esistenti." << endl;
+    	cout << "Impossibile salvare il contatto: nome o cognome esistenti." << endl;
 	}else if(control == 2)
 	{
 		cout << endl;
-    	cout << "Impossibile salvare il contatto, numero esistente." << endl;
+    	cout << "Impossibile salvare il contatto: numero esistente." << endl;
 	}else if(control == 0)
 	{
 		name.push_back(first_name);
@@ -177,33 +188,20 @@ void add_contact()
 		cout << endl;
 		main_page();
 	}
-	
-	cout << "A - salva un altro contatto" << endl
-	<< "M - torna alla rubrica" << endl;
-    	cin >> key;
-    	if(key == 'a')
-    	{
-    		add_contact();
-		}else if(key == 'm')
-		{
-			main_page();
-		}
 }
 
 void search()
 {
-	cout << "Inserici un nome o un numero per esteso da ceracere" << endl;
+	cout << "Inserici un nome o un numero per esteso da cercare" << endl;
 	cin >> question;
 	cout << endl;
-	if (is_number(question))
+	//if(question[0] == '0'||'1'||'2'||'3'||'4'||'5'||'6'||'7'||'8'||'9')
+	if(is_number(question))
 	{
-		int numero; 
-		stringstream ss(question);
-		ss >> numero;
 		cout << endl << "Risultato della ricerca:"<< endl << endl;
 		for (int i = 0; i < phone.size(); i++)
 		{
-		    if(phone[i] == numero)
+		    if(phone[i] == question)
 			{
 				cout << name[i] << " "
 				<< surname[i] << " "
@@ -261,28 +259,11 @@ void open_contact()
 		{
 	    	if(name[i] == first_name and surname[e] == last_name and i == e)
 			{
-				//int condition = true;
-	    		//while(condition)
-	    		//{	
 	    			index = e;
 	    			cout << endl << name[e] << " " << surname[e] << " " << phone[e] << " " << endl
 					<< "C - modifica" << endl
 					<< "R - elimina"<< endl
 					<< "M - torna alla rubrica" << endl;
-					/*cin >> key;
-					switch(key)
-					{
-						case 'c':
-							change();
-							break;						
-						case 'r':
-							remove();
-							break;							
-						case 'm':
-							main_page();
-							break;
-					} */			
-				//*}
 			}
 		}
 	}
@@ -299,19 +280,19 @@ void change()
 	switch(element)
 	{
 		case 1:
-			cout << "Nuovo nome del contatto: " << endl;
+			cout << "Nome: ";
 			cin >> newname;
 			name[index]	= newname;
 			change();
 			break;				
 		case 2:
-			cout << "Nuovo cognome del contatto: " << endl;
+			cout << "Cognome: ";
 			cin >> newsurname;
 			surname[index]	= newsurname;
 			change();
 			break;							
 		case 3:
-			cout << "Nuovo numero del contatto: " << endl;
+			cout << "Numero: ";
 			cin >> newnumber;
 			phone[index] = newnumber;
 			change();
@@ -324,29 +305,31 @@ void change()
 
 void remove()
 {
-	cout << "Sei sicuro di voler eliminare il contatto?" << endl;
+	cout << "Sei sicuro di voler eliminare il contatto?" << endl
+	<< "1 - Si" << endl << "2 - No" << endl;;
 	cin >> choise;
-	if(choise == "si")
+	if(choise == '1')
 	{
 		name.erase(name.begin() + index);
 		surname.erase(surname.begin() + index);
 		phone.erase(phone.begin() + index);
 		main_page();
-	}else if(choise == "no"){
+	}else if(choise == '2'){
 		open_contact();
 	}	
 }
 
 void remove_all()
 {
-	cout << "Sei sicuro di voler eliminare tutta la rubrica?" << endl;
+	cout << "Sei sicuro di voler eliminare tutta la rubrica?" << endl
+	<< "1 - Si" << endl << "2 - No" << endl;
 	cin >> choise;
-	if(choise == "si")
+	if(choise == '1')
 	{
 		name.clear();
 		surname.clear();
 		phone.clear();
-	}else if(choise == "no")
+	}else if(choise == '2')
 	{
 		main_page();
 	}
