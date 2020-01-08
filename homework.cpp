@@ -42,15 +42,13 @@ int main(){
 
 //ES 4
 /*int q = true;
-char choise;
-
+char choice;
 void menu(){
 	cout << endl << "1 - calcolo del fattoriale di un numero intero positivo" << endl
 	<< "2 - calcolo della potenza N-esima di un numero intero positivo" << endl
 	<< "3 - esci" << endl;
-	cin >> choise;
+	cin >> choice;
 }
-
 void fattoriale(){
 	int n;
 	double fat = 1;
@@ -63,10 +61,9 @@ void fattoriale(){
 		}
 		cout << "il fattoriale del numero vale: " << fat << endl;
 	}
-	else {cout << "non è possibile calcolare il fattoriale di un numero negativo" << endl;
+	else {cout << "non Ã¨ possibile calcolare il fattoriale di un numero negativo" << endl;
 	}
 }
-
 void potenza(){
 	int a,b;
 	cout << "inserisci due numeri" << endl;
@@ -74,11 +71,10 @@ void potenza(){
 	cin >> b;
 	cout << "la potenza e': " << pow(a,b) << endl;
 }
-
 int main(){	
 	while(q){
 		menu();
-		switch(choise){
+		switch(choice){
 			case '1':
 				fattoriale();
 				break;
@@ -134,8 +130,8 @@ int main(){
 	}
 	cout << endl;
 	for(int i = 0; i < number.size(); i++){
-		if(number[i]%2 == 0){number[i] += 1;}
-		else if(number[i]%2 != 0){number[i] -= 1;}	
+		if(number[i] >= 0){number[i]++;}
+		else{number[i]--;}	
 	}
 	for(int i = 0; i < number.size(); i++){
 		cout << " " << number[i];
@@ -143,7 +139,7 @@ int main(){
 	cout << endl << "digita la posizione dell'elemento da visualizzare: ";
 	cin >> position;
 	if(position < 20){cout << number[position];}
-	else{cout << "non è presente questa posizione" << endl;}
+	else{cout << "non Ã¨ presente questa posizione" << endl;}
 	cout << endl;
 	cout << "i numeri superiori alla media sono: ";
 	for(int i = 0; i < number.size(); i++){average += number[i];}
@@ -173,7 +169,3 @@ int main(){
 		}
 	}
 }*/
-
-	
-
-
