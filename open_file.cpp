@@ -1,19 +1,19 @@
 #include<assert.h>
 #include<stdio.h>
-int N, S;
+int n, sum;
 int main(){
-	freopen("input.txt","r",stdin);
-	//freopen("output.txt", "w", stdout);
-	assert(1 == scanf("%d", &N));
-	int A[N];
-	for(int i = 0; i < N; i++ ){
-		assert(1 == scanf("%d", &A[i]));
+	freopen("input/1","r",stdin);
+	freopen("output/1", "w", stdout);
+	assert(1 == scanf("%d", &n));
+	int a[n];
+	for(int i = 0; i < n; i++ ){
+		assert(1 == scanf("%d", &a[i]));
 	}
 	
-	for(int i = 0; i < N; i++ ){
-		 S += A[i];
+	for(int i = 0; i < n; i++ ){
+		 sum += a[i];
 	}
 	
-  printf("%d\n", S);
+  printf("%d\n", sum);
   return 0;
 }
