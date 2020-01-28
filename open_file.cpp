@@ -103,3 +103,25 @@ int main(){
   printf("%d", x);
   return 0;
 }*/
+
+
+/*#include<assert.h>
+#include<stdio.h>
+int n;
+int main(){
+	freopen("input5","r",stdin);
+	freopen("output5", "w", stdout);
+	assert(1 == scanf("%d", &n));
+	
+	for(int i = 0; i<n; i++){
+		int a[3];
+		int x = 0;
+		for(int e = 0; e<3; e++){
+			assert(1 == scanf("%d", &a[e]));
+			x = x + a[e];
+		}
+		x = x/3;
+		printf("%d\n", x);
+	}
+	return 0;
+}*/
