@@ -41,6 +41,65 @@ int main(){
 
 /*#include<assert.h>
 #include<stdio.h>
+#include<iostream>
+#define MAXlist 100
+using namespace std;
+
+int n, high, low;
+int a[MAXlist];
+
+void open_file(){
+	int temp;
+	freopen("input_pesi","r",stdin);
+	freopen("output_pesi", "w", stdout);
+	for(n = 0; n < MAXlist && scanf("%d", &temp)!=EOF; n++){
+		a[n] = temp;
+	}
+}
+
+void max(){
+	high = a[0];
+	for(int i = 0; i < n; i++){
+		if(high < a[i]) high = a[i];	
+	}
+	cout << "massimo: " << high << endl;
+}
+
+void min(){
+	low = a[0];
+	for(int i = 0; i < n; i++){
+		if(low > a[i]){
+			low = a[i];
+		}	
+	}
+	cout << "minimo: " << low << endl;
+}
+
+void sort(){
+	for(int i = 0; i < n; i++){
+		for(int e = 0; e < n; e++){
+			if(a[i] < a[e]){
+				high = a[e];
+				a[e] = a[i];
+				a[i] = high;
+			}
+		}
+	}
+	cout << "array: " << endl;
+	for(int i = 0; i < n; i++){
+		cout << a[i] << endl;
+	}
+}
+int main(){
+	open_file();
+	max();
+	min();
+	sort();
+}*/
+
+
+/*#include<assert.h>
+#include<stdio.h>
 int n, prev;
 int main(){
 	freopen("input/2","r",stdin);
