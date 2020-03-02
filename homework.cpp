@@ -169,3 +169,102 @@ int main(){
 		}
 	}
 }*/
+
+
+
+
+
+
+
+
+#include<assert.h>
+#include<cstdlib>
+#include<iostream>
+using namespace std;
+//ES 12
+/*int a, b, prod;
+int main(){
+	freopen("input1","r",stdin);
+	freopen("output1", "w", stdout);
+	assert(2 == scanf("%d %d", &a, &b));
+	if(a > 0 && b > 0){
+		for(int i = 0; i < b; i++ ){
+			prod += a;
+		}
+	}
+		
+  printf("%d", prod);
+  return 0;
+}*/
+//ES 13
+/*int l = 12;
+int d = 4;
+for(int i = 0; i < l; i++){
+	if(i == 0 || i == l-1){
+		for(int e = 0; e < l; e++){
+			cout >> "*";
+		}
+	}else if(i)
+	 
+}
+*/
+
+//ES 14
+/*const int dim=30;
+typedef int matrice[dim][dim];
+
+int main(){
+	matrice m1;
+	int i,j,n;
+	//dimensione matrice
+	do{
+		cout<<"Inserisci la dimensione delle matrici"<<endl;
+		cin>>n;
+	}
+	while(n>dim);
+	cout<<endl;
+	//inizializzazione prima riga
+	m1[0][0]=1;
+	for(j=1;j<n;j++)
+		m1[0][j]=0;
+	//calcolo le righe successive
+	for(i=1;i<n;i++)
+	{
+		m1[i][0]=1;
+		for(j=1;j<n;j++)
+			m1[i][j]=m1[i-1][j-1]+m1[i-1][j];
+	}
+	//lettura
+	for(i=0;i<n;i++)
+	{
+		for(j=1;j<(n);j++) 
+			cout<<" ";
+		for(j=0;j<=i;j++)
+			cout<<m1[i][j]<<" ";
+			cout<<endl;
+	}
+	return 0;
+}*/
+//ES 15
+/*int n = 100;
+int g = 0;
+int main(){
+	for(int i = 1; i < 2*n; i+=2){
+		cout << i << " ";
+		g++;
+		if(g == 5){
+			cout << endl; 
+			g = 0;
+		}		
+	}
+}*/
+//ES 16
+/*int n;
+int m = 12;
+int main(){
+	cout << "inserisci un numero" << endl;
+	cin >> n;
+	for(int i = 1; i <= m; i++){
+		cout << n << "*" << i << "=" << n*i << endl;
+	}
+}*/
